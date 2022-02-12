@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <title>Modifier livre</title>
+</head>
+
+<body>
+    <section class="py-5">
+        <form action="/foodapis/data/update/new" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="card text-center">
+                            <div class="card-header text-light bg-success">
+                              <h4>FOODS </h4>
+                            </div>
+                            {% for line in data %}
+                            <div class="card-body py-4">
+                                <div class="mb-5">
+                                    <input type="text" class="form-control"  placeholder="Groupes" name="groupe" value="{{line.groupe}}">
+                                </div>
+                                <div class="mb-5">
+                                    <input type="text" class="form-control"  placeholder="Nutriments" name="nutriment" value="{{line.nutriment}}">
+                                </div>
+                                <div class="mb-5">
+                                    <input type="text" class="form-control"  placeholder="Minéraux" name="mineral" value="{{line.mineral}}">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Vitamines" name="vitamine" value="{{line.vitamine}}">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="reset" class="btn btn-danger">Annuler</button>
+                                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                                </div>                               
+                            </div>
+                            {% endfor %}
+                          </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
