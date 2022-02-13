@@ -308,4 +308,4 @@ def not_found(error):
         }), 400
 
 
-app.run(debug=True)
+app.run()
