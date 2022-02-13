@@ -1,5 +1,3 @@
-CREATE DATABASE bibliotheque;
-
 insert into categories (libelle_categorie) values('Roman'), ('Geographie'), ('Histoire'), ('Philosophie'), ('Developpement personnel'), ('Theatre'), ('Theologie'), ('Contes'), ('Auto-biographie'), ('Bandes déssinée'), ('Comics')
 
 insert into livres(isbn, titre, date_publication, auteur, editeur, categorie_id) 

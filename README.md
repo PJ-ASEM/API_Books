@@ -29,6 +29,12 @@ Cette commande installera tous les packages se trouvant dans le fichier `require
 
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) est l'extension que nous utiliserons pour gérer les requêtes cross origin de notre serveur frontal.
 
+## Database Setup
+avec postgres en cours d'execcution, vous pouvez restauré la base de données en utilisant le fichier fourni the bibliotheque.sql et insérer des données avec le fichier bibliotheque_insert.sql .
+```bash
+psql bibliotheque > bibliotheque.sql
+```
+
 ## Démarrer le serveur
 
 Pour démarrer le serveur sur Linux ou Mac, executez:
