@@ -110,7 +110,7 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 .##GET/livres/(id)
-  GENERAL: Cet endpoint permet de récupérer les informations d'un livre particulier s'il existe par le biais de son ID.
+  GENERAL: Cet endpoint permet de récupérer les informations d'un livre particulier s'il existe par le biais de son ID et retourne également la valeur du succès et l'id passé en parametre.
 
     SAMPLE: curl -i http://localhost:5000/livres/10
 
@@ -130,7 +130,7 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 .##GET/categories/(id)/livres
-  GENERAL:   Cet endpoint permet de lister les livres appartenant à une categorie donnée. Il renvoie l' objet de la categorie passé en id et les livres l'appartenant ainsi le total des livres dans la categorie.
+  GENERAL:   Cet endpoint permet de lister les livres appartenant à une categorie donnée. Il renvoie l' objet de la categorie passé en id et les livres l'appartenant ainsi que la valeur du succès et  le total des livres dans la categorie.
 
     SAMPLE: curl -i http://localhost:5000/categories/1/livres
 
@@ -164,8 +164,7 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 .##GET/categories/(id)
-  GENERAL: Cet endpoint permet de récupérer les informations d'une categorie particulière s'il existe par le biais de son ID.
-
+  GENERAL: Cet endpoint permet de récupérer les informations d'une categorie particulière s'il existe par le biais de son ID, et retourne également la valeur du succès et l'id passé en parametre
     SAMPLE: curl -i http://localhost:5000/categories/9
 
     {
@@ -177,9 +176,38 @@ L'API vous renvoie 4 types d'erreur:
         "success": true
     }
 ```
+. ## GET/livres
+
+    GENERAL:Cet endpoint retourne la liste des objets categories, la valeur du succès et le total des livres. 
+    
+    SAMPLE: curl -i http://localhost:5000/livres
+
+    {
+        "categories": [
+            {
+                "id": 1,
+                "libelle_categorie": "Roman"
+            },
+            {
+                "id": 4,
+                "libelle_categorie": "Philosophie"
+            },
+            {
+                "id": 9,
+                "libelle_categorie": "Auto-biographie"
+            },
+            {
+                "id": 8,
+                "libelle_categorie": "BD"
+            }
+        ],
+        "success": true,
+        "total": 4
+    }
+```
 
 . ## DELETE/livres/id
-    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe.Retourne l'ID du livre supprimé, les informations de ce livre, la valeur du succès et le nouveau total.
+    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe. Retourne l'ID du livre supprimé, les informations de ce livre, la valeur du succès et le nouveau total.
 
         SAMPLE: curl -X DELETE http://localhost:5000/livres/12
 
@@ -216,9 +244,9 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 . ##PATCH/livres/(id)
-  GENERAL: Cet endpoint permet de mettre à jour les informations du livre dont  l' id en passé en parametre et affiche le livre mis à jour.
+  GENERAL: Cet endpoint permet de mettre à jour les informations du livre dont  l' id en passé en parametre et affiche le livre mis à jour, la valeur du succès et l'id passé en parametre..
 
-  SAMPLE: curl -X PATCH http://localhost:5000/livres/3 -H "Content-Type:application/json" -d '{"auteur": "Robert GREENE","date_publication": "31-12-1998","editeur": "Les editions Leduc.s","id": 3,"isbn": "979-10-92928-07-5","titre": "Power - Les 48 lois du pouvoir"}'
+  SAMPLE: curl -X PATCH http://localhost:5000/livres/3 -H "Content-Type:application/json" -d '{"auteur": "Robert GREENE","date_publication": "31-12-1998","editeur":    "Les editions Leduc.s","id": 3,"isbn": "979-10-92928-07-5","titre": "Power - Les 48 lois du pouvoir"}'
 
     {
         "livre": {
@@ -238,8 +266,7 @@ L'API vous renvoie 4 types d'erreur:
 
 . ##PATCH/categories(id)
   GENERAL:
-  Cet endpoint permet de mettre à jour le libelle la categorie dont l' ID est passé en paramètre.
-  Il retourne une nouvelle categorie avec la nouvelle valeur.
+  Cet endpoint permet de mettre à jour le libelle la categorie dont l' ID est passé en paramètre. Il retourne une nouvelle categorie avec la nouvelle valeur,  la valeur du succès et l'id passé en parametre.
 
   SAMPLE: curl -X PATCH 'http://localhost:5000/categories/8' -H "Content-Type:application/json" -d '{"libelle_categorie":"BD"}'
 

@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, abort, jsonify, render_template, request, session
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
@@ -15,6 +16,13 @@ app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
+CORS(app)
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers','Content-Type,Authorization,true')
+    response.headers.add('Access-Control-Allow-Methods','GET,PATCH,POST,DELETE,OPTIONS')
+    return response
 
 
 ################################################################
@@ -100,8 +108,6 @@ db.create_all()
 @app.route('/livres' , methods=['GET'])
 def get_all_books():
     livres=Livre.query.all()
-    #return render_template('BookShop.html', data=livres)
-
     formated_books=[ bk.format() for bk in livres]
     return jsonify({
         'success':True,
@@ -133,7 +139,6 @@ def get_book(id):
 #    Endpoint LISTE DES LIVRES D'UNE CATEGORIE
 #
 ############################################################
-#LISTE DES LIVRES DONT LA CATEGORIE EST PASSEE EN PARAMETRE
 @app.route('/categories/<int:id>/livres' , methods=['GET'])
 def get_books_with_cat_id(id):
     cat=Categorie.query.get(id)
