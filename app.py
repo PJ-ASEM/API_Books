@@ -13,7 +13,7 @@ database_name='bibliotheque'
 #psw=os.getenv('db_password')
 #host=os.getenv('hostname')
 #database_path='postgresql://{}:{}@{}/{}'.format('postgres', psw, host, database_name)
-database_path='postgresql://ylxtmpxvyklowa:0585a5f54d13439c97fc947acc3e69458bf61ac8610be466c400dfe267287cf0@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d5mai2ikj4ig08'
+database_path='postgresql://iqcxnvujgsfxgw:d875e57cc980bf9df802427c05f82f49d5bd01ba558059c7be23d8f4518a25b4@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d8t4pfh8fuofvi'
 
 app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
