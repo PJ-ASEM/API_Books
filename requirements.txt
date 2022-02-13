@@ -24,4 +24,3 @@ SQLAlchemy==1.4.31
 urllib3==1.26.8
 Werkzeug==2.0.2
 yarg==0.1.9
-f
