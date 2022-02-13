@@ -9,10 +9,12 @@ load_dotenv()
 app=Flask(__name__)
 
 database_name='bibliotheque'
-psw=os.getenv('db_password')
-host=os.getenv('hostname')
 
-database_path='postgres://ylxtmpxvyklowa:0585a5f54d13439c97fc947acc3e69458bf61ac8610be466c400dfe267287cf0@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d5mai2ikj4ig08'
+#psw=os.getenv('db_password')
+#host=os.getenv('hostname')
+#database_path='postgresql://{}:{}@{}/{}'.format('postgres', psw, host, database_name)
+database_path='postgresql://ylxtmpxvyklowa:0585a5f54d13439c97fc947acc3e69458bf61ac8610be466c400dfe267287cf0@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d5mai2ikj4ig08'
+
 app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
@@ -25,6 +27,7 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods','GET,PATCH,POST,DELETE,OPTIONS')
     return response
 
+db.init_app(app)
 
 ################################################################
 #
@@ -309,4 +312,4 @@ def not_found(error):
         }), 400
 
 
-app.run(debug=True)
+app.run(host='localhost', port=5000, debug=True)
