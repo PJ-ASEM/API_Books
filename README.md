@@ -176,7 +176,7 @@ L'API vous renvoie 4 types d'erreur:
         "success": true
     }
 ```
-. ## GET/livres
+. ## GET/categories
 
     GENERAL:Cet endpoint retourne la liste des objets categories, la valeur du succès et le total des livres. 
     
@@ -206,8 +206,8 @@ L'API vous renvoie 4 types d'erreur:
     }
 ```
 
-. ## DELETE/livres/id
-    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe. Retourne l'ID du livre supprimé, les informations de ce livre, la valeur du succès et le nouveau total.
+. ## DELETE/livres/(id)
+    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe. Retourne l'ID du livre supprimé, les informations de ce livre, la valeur du succès et le nouveau total des livres enregistrés.
 
         SAMPLE: curl -X DELETE http://localhost:5000/livres/12
 
@@ -228,7 +228,7 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 . ## DELETE/categories/(id)
-    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe.Retourne l'ID de la categorie supprimée, les informations de cette categorie, la valeur du succès et le nouveau total.
+    GENERAL: Cet endpoint permet de supprimer un element si l'ID existe.Retourne l'ID de la categorie supprimée, les informations de cette categorie, la valeur du succès et le nouveau total des categories enregistrés.
 
         SAMPLE: curl -X DELETE http://localhost:5000/categories/10
 
@@ -244,9 +244,9 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 . ##PATCH/livres/(id)
-  GENERAL: Cet endpoint permet de mettre à jour les informations du livre dont  l' id en passé en parametre et affiche le livre mis à jour, la valeur du succès et l'id passé en parametre..
+    GENERAL: Cet endpoint permet de mettre à jour les informations du livre dont  l' id en passé en parametre et affiche le livre mis à jour, la valeur du succès et l'id passé en parametre..
 
-  SAMPLE: curl -X PATCH http://localhost:5000/livres/3 -H "Content-Type:application/json" -d '{"auteur": "Robert GREENE","date_publication": "31-12-1998","editeur":    "Les editions Leduc.s","id": 3,"isbn": "979-10-92928-07-5","titre": "Power - Les 48 lois du pouvoir"}'
+    SAMPLE: curl -X PATCH http://localhost:5000/livres/3 -H "Content-Type:application/json" -d '{"auteur": "Robert GREENE","date_publication": "31-12-1998","editeur":    "Les editions Leduc.s","id": 3,"isbn": "979-10-92928-07-5","titre": "Power - Les 48 lois du pouvoir"}'
 
     {
         "livre": {
@@ -265,10 +265,9 @@ L'API vous renvoie 4 types d'erreur:
 ```
 
 . ##PATCH/categories(id)
-  GENERAL:
-  Cet endpoint permet de mettre à jour le libelle la categorie dont l' ID est passé en paramètre. Il retourne une nouvelle categorie avec la nouvelle valeur,  la valeur du succès et l'id passé en parametre.
+    GENERAL:Cet endpoint permet de mettre à jour le libelle la categorie dont l' ID est passé en paramètre. Il retourne une nouvelle categorie avec la nouvelle valeur,  la valeur du succès et l'id passé en parametre.
 
-  SAMPLE: curl -X PATCH 'http://localhost:5000/categories/8' -H "Content-Type:application/json" -d '{"libelle_categorie":"BD"}'
+    SAMPLE: curl -X PATCH 'http://localhost:5000/categories/8' -H "Content-Type:application/json" -d '{"libelle_categorie":"BD"}'
 
     {
         "categorie": {
