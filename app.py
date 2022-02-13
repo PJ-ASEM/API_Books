@@ -16,6 +16,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 
+
+################################################################
+#
+#             Classe Categorie
+#
+################################################################
 class Categorie(db.Model):
     __tablename__="categories"
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -39,6 +45,13 @@ class Categorie(db.Model):
     def update(self):
         db.session.commit()
 
+
+
+################################################################
+#
+#             Classe Livre
+#
+################################################################
 class Livre(db.Model):
     __tablename__="livres"
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -135,13 +148,10 @@ def get_books_with_cat_id(id):
             'libelle_categorie':cat.libelle_categorie,
             'total':len(livres),
             "livres":formated_books   
-            
-
         })
         
 
         
-
 
 
 
@@ -228,8 +238,6 @@ def delete_category(id):
         })
 
 
-
-#######DEGUGGGG
 ##########################################################
 #
 #    Endpoint MODIFIER LES INFORMATIONS D'UN LIVRE
@@ -276,5 +284,23 @@ def update_category(id):
             'updated_id':id,
             'categorie':categorie.format()
         })
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "success": False, 
+        "error": 404,
+        "message": "Ressource non disponible"
+        }), 404
+
+@app.errorhandler(400)
+def not_found(error):
+    return jsonify({
+        "success": False, 
+        "error": 400,
+        "message": "Mauvaise requete"
+        }), 400
+
 
 app.run(debug=True)
