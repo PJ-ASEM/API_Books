@@ -9,9 +9,9 @@ load_dotenv()
 app=Flask(__name__)
 
 database_name='bibliotheque'
-psw=os.getenv('db_password')
-host=os.getenv('hostname')
-database_path='postgresql://{}:{}@{}/{}'.format('postgres', psw, host, database_name)
+#psw=os.getenv('db_password')
+#host=os.getenv('hostname')
+database_path='postgresql://emsvynulndakzo:0a05bdeef564f39fed02b046d16d1a0c5cf4984f65ada3b2dd5b46d90a5a08c8@ec2-44-194-113-156.compute-1.amazonaws.com:5432/d13ojd6ajosa7u'
 app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
