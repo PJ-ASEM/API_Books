@@ -11,6 +11,7 @@ app=Flask(__name__)
 database_name='bibliotheque'
 #psw=os.getenv('db_password')
 #host=os.getenv('hostname')
+#database_path='postgresql://{}:{}@{}/{}'.format('postgres', psw, host, database_name)
 database_path='postgresql://qpbuocxmmyxhsp:b1009fb254ddbce0e88dc5a94b40c38202c083a572cc249b06658568f2ab6ae2@ec2-54-216-17-9.eu-west-1.compute.amazonaws.com:5432/d5u391h21lrpal'
 app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -105,8 +106,6 @@ db.create_all()
 #           Endpoint LISTE DE TOUS LES LIVRES 
 #
 ##########################################################
-
-
 @app.route('/livres' , methods=['GET'])
 def get_all_books():
     livres=Livre.query.all()
@@ -156,18 +155,7 @@ def get_books_with_cat_id(id):
             'total':len(livres),
             "livres":formated_books   
         })
-        
 
-        
-
-
-
-
-############################################################
-#
-#    Endpoint LISTER UNE CATEGORIE
-#
-############################################################
 
 
 ############################################################
