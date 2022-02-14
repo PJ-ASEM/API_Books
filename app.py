@@ -306,7 +306,7 @@ def not_found(error):
     return jsonify({
         "success": False, 
         "error": 400,
-        "message": "Mauvaise requedte"
+        "message": "Mauvaise requete"
         }), 400
 
 if __name__ == '__main__':
