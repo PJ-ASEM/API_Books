@@ -105,6 +105,8 @@ db.create_all()
 #           Endpoint LISTE DE TOUS LES LIVRES 
 #
 ##########################################################
+
+
 @app.route('/livres' , methods=['GET'])
 def get_all_books():
     livres=Livre.query.all()
@@ -275,6 +277,10 @@ def update_book(id):
 #    Endpoint MODIFIER LE LIBELLE D'UNE CATEGORIE
 #
 ##########################################################
+@app.route('/')
+def index():
+	return '<h2>welcome to flask journey</h2>'
+
 @app.route('/categories/<int:id>', methods=['PATCH'])
 def update_category(id):
     cat=request.get_json()
@@ -308,4 +314,4 @@ def not_found(error):
         }), 400
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
