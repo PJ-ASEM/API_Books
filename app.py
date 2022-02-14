@@ -18,7 +18,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 CORS(app)
-
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Headers','Content-Type,Authorization,true')
