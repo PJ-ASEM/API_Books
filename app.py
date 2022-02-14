@@ -187,9 +187,7 @@ def get_categorie(id):
             'categorie':cat.format()
         })
 
-@app.route('/')
-def index():
-	return '<h2>welcome to flask journey</h2>'
+
 ##########################################################
 #
 #           Endpoint LISTE DE TOUTES LES CATEGORIES 
@@ -279,8 +277,6 @@ def update_book(id):
 #    Endpoint MODIFIER LE LIBELLE D'UNE CATEGORIE
 #
 ##########################################################
-
-
 @app.route('/categories/<int:id>', methods=['PATCH'])
 def update_category(id):
     cat=request.get_json()
@@ -314,4 +310,4 @@ def not_found(error):
         }), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
