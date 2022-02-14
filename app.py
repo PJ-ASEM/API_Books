@@ -11,7 +11,7 @@ app=Flask(__name__)
 database_name='bibliotheque'
 #psw=os.getenv('db_password')
 #host=os.getenv('hostname')
-database_path='postgresql://qnruakoxblodue:e3ef795a2d8301de11ac1d5aaaf508bf871aaab38ad7eaedb2bc946769325d44@ec2-54-76-249-45.eu-west-1.compute.amazonaws.com:5432/dbhh4n3ov5v3b8'
+database_path='postgresql://qpbuocxmmyxhsp:b1009fb254ddbce0e88dc5a94b40c38202c083a572cc249b06658568f2ab6ae2@ec2-54-216-17-9.eu-west-1.compute.amazonaws.com:5432/d5u391h21lrpal'
 app.config['SQLALCHEMY_DATABASE_URI']=database_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
@@ -63,7 +63,7 @@ class Categorie(db.Model):
 class Livre(db.Model):
     __tablename__="livres"
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
-    isbn=db.Column(db.String(18), nullable=False)
+    isbn=db.Column(db.String(20), nullable=False)
     titre=db.Column(db.String(50), nullable=False)
     date_publication=db.Column(db.Date(),nullable=False)
     auteur=db.Column(db.String(100), nullable=False)
