@@ -306,8 +306,8 @@ def not_found(error):
     return jsonify({
         "success": False, 
         "error": 400,
-        "message": "Mauvaise requete"
+        "message": "Mauvaise requedte"
         }), 400
 
 if __name__ == '__main__':
-    app.run(),
+    app.run()
