@@ -63,7 +63,7 @@ class Categorie(db.Model):
 class Livre(db.Model):
     __tablename__="livres"
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
-    isbn=db.Column(db.String(13), nullable=False)
+    isbn=db.Column(db.String(18), nullable=False)
     titre=db.Column(db.String(50), nullable=False)
     date_publication=db.Column(db.Date(),nullable=False)
     auteur=db.Column(db.String(100), nullable=False)
